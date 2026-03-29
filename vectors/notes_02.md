@@ -54,69 +54,69 @@ $5z=10$
 (3) 한 행을 상수배하여 다른 행에 더한다. 
 ```
 
-$\left(\begin{array}{ccc|c}
+$$\left(\begin{array}{ccc|c}
 1 & -1 & -1 & 2\\
 3 & -3 & 2 & 16\\
 2 & -1 & 1 & 9\\
-\end{array}\right)$
+\end{array}\right)$$
 
 **$R_2 \leftarrow R_2 - 3R_1, \quad R_3 \leftarrow R_3 - 2R_1$**
 
-$\left(\begin{array}{ccc|c}
+$$\left(\begin{array}{ccc|c}
 1 & -1 & -1 & 2\\
 3-3*1 & -3-3*-1 & 2-3*-1 & 16-3*2\\
 2-2*1 & -1-2*-1 & 1-2*-1 & 9-2*2\\
-\end{array}\right)$
+\end{array}\right)$$
 
-$\left(\begin{array}{ccc|c}
+$$\left(\begin{array}{ccc|c}
 1 & -1 & -1 & 2\\
 0 & 0 & 5 & 10\\
 0 & 1 & 3 & 5\\
-\end{array}\right)$
+\end{array}\right)$$
 
-**$R_2 \leftrightarrow R_3$**, 2행의 선행성분이 0이므로 2, 3행을 교환하는 행 교환(partial pivoting)이며 2,3행은 행 동치(row equivalent)라 한다
+**$R_2 \leftrightarrow R_3$**, 2행의 선행성분이 0이므로 2, 3행을 교환하는 행 교환(partial pivoting)이며 2,3행은 행 동치(row equivalent)라 한다.
 
-$\left(\begin{array}{ccc|c}
+$$\left(\begin{array}{ccc|c}
 1 & -1 & -1 & 2\\
 0 & 1 & 3 & 5\\
 0 & 0 & 5 & 10\\
-\end{array}\right)$
+\end{array}\right)$$
 
 **$R_3 \leftarrow \frac{1}{5} \cdot R_3 $**, 현재 상태에서 후진 소거 진행
 
-$\left(\begin{array}{ccc|c}
+$$\left(\begin{array}{ccc|c}
 x & y & z & R\\
 1 & -1 & -1 & 2\\
 0 & 1 & 3 & 5\\
 0 & 0 & 5 \cdot \frac{1}{5} & 10 \cdot \frac{1}{5} (R_3)\\
 0 & 0 & 1 & 2 (R_3)\\
-\end{array}\right)$
+\end{array}\right)$$
 
 **$R_2 \leftarrow R_2 -3 \cdot R_3$**, 2행($R_2$)에서 3행을 3배하여 빼서 z소거
 
-$\left(\begin{array}{ccc|c}
+$$\left(\begin{array}{ccc|c}
 1 & -1 & -1 & 2\\
 0 & 1 & 0 & -1 (R_2)\\
 0-3*0 & 1-3*0 & 3-3*1 & 5-3*2 (R_2)\\
 0 & 0 & 1 & 2\\
-\end{array}\right)$
+\end{array}\right)$$
 
 **$R_1 \leftarrow R_1 + R_3$**, 1행($R_1$)에서 3행을 더하여 z소거 
 **$R_1 \leftarrow R_1 + R_2$**, 1행($R_1$)에서 2행을 더하여 y소거 
 
-$\left(\begin{array}{ccc|c}
+$$\left(\begin{array}{ccc|c}
 1 & 0 & 0 & 3 (R_1)\\
 1+0 & -1+1 & -1+1+0 & 2+2-1 (R_1 + R_3 + R_2)\\
 0 & 1 & 0 & -1\\
 0 & 0 & 1 & 2\\
-\end{array}\right)$
+\end{array}\right)$$
 
 기약 행 사다리꼴(reduced row echelon form)이며, 앞으로 연립일차방정식의 벡터 해를 열 벡터로 나타낸다. 또한, 행렬의 행 사디리꼴에서 적어도 한 성분이 0이 아닌 행의 수를 그 행렬의 계수(rank)라 한다. 
 
-$\left(\begin{array}{ccc|c}
+$$\left(\begin{array}{ccc|c}
 1 & 0 & 0 & 3 (x=3)\\
 0 & 1 & 0 & -1 (y=-1)\\
 0 & 0 & 1 & 2 (z=2, 영 행)\\
-\end{array}\right)$
+\end{array}\right)$$
 
 Q. 가우스-조르당 소거법(gauss-jordan elimination)은 기약 행 사다리꼴(RREF) 조건으로 해를 바로 읽어낸다. 각 행의 선행성분이 1이 되고, 선행 성분 1이 있는 열의 다른 모든 성분이 0이 될 때까지 소거한다. 

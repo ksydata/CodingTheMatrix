@@ -56,3 +56,30 @@ $$\mathbf{v} = \mathbf{v}_{\parallel} + \mathbf{v}_{\perp}$$
 ## 선형 가중 결합 (Linear Combination)
 
 벡터 덧셈 + 스칼라 곱, 둘을 합친 것
+
+
+## 내적(닮은 정도)과 정사영 (inner product & projection)
+
+$${a}^T{b} = \|a\| \cdot \|{b}\| \cos\theta = \|{a}\| \cos\theta \cdot \|{b}\| = \|{b}\| \cos\theta \cdot \|{a}\|$$
+
+a를 b방향으로 정사영한 길이(∥a∥cosθ)와 b를 a방향으로 정사영한 길이(∥b∥cosθ), 내적은 이 둘 중 어느 쪽으로 해석해도 같은 값이 나온다.
+
+$\frac{a}{\sqrt{a^T \cdot a}}$는 a와 방향은 같고 크기가 1인 단위벡터(unit vector)다. (normalize 가능) 
+
+$\|a\| \cdot \cos\theta = \frac{a^T{b}}{b}$에서 b의 크기(방향 제외)를 나눠줌으로써 normalize한다. 
+
+$\|a\| \cdot \cos\theta = \frac{a^T{b}}{\sqrt{b^Tb}} \cdot \frac{b}{\sqrt{b^T \cdot b}}$
+
+$\frac{a^T{b}}{b^T{b}} \cdot b$
+
+
+## 벡터의 norm
+
+2-norm(L2 norm)으로 두 벡터 사이의 거리(길이)를 구하는데 쓴다.
+
+$$a = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, \quad \|a\|_2 = \sqrt{a^T a} = \sqrt{|1|^2 + |2|^2 + |3|^2} = (1^2 + 2^2 + 3^2)^{\frac{1}{2}}$$
+
+1-norm(L1 norm)
+
+$$b = \begin{bmatrix} 1 \\ 2 \\ -3 \end{bmatrix}, \quad \|b\|_1 = 1 + 2 + 3 = 6$$
+
