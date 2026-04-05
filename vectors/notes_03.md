@@ -86,20 +86,25 @@ $$Span_{v_1, v_2} = {c_1 \cdot \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} + c_2 \
 | 성질 | 설명 |
 |------|------|
 | $S \subseteq \text{span}(S)$ | $S$는 자신의 span에 포함된다 |
-| zero vector 포함 | 임의의 (non-empty) 벡터 집합의 span은 항상 영벡터를 포함한다 |
+| zero vector($c_i = 0$) 포함 | 임의의 (non-empty) 벡터 집합의 span은 항상 영벡터를 포함한다 |
 | 대부분 무한 | $\text{span}(S)$는 대부분 무한히 많은 벡터를 포함 |
 | subspace와 연관 | span은 **부분공간(subspace)** 개념과 밀접하게 관련 |
 
 
 핵심 성질 2. - Spanning Sets of Vectors (cont'd)
 
+$Span_{x, y, z} = x \cdot \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} + y \cdot \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} = \begin{bmatrix} x \\ y \\ 0 \end{bmatrix}$(z가 0이면, 선형결합 가능)
 
+$Span_{x, y} = x \cdot \begin{bmatrix} 0 \\ 0 \end{bmatrix} + y \cdot \begin{bmatrix} 0 \\ 1 \end{bmatrix} = \begin{bmatrix} 0 \\ y \end{bmatrix}$ (선형결합 불가)
+
+$Span_{x, y} = x \cdot \begin{bmatrix} 2 \\ -1 \end{bmatrix} + y \cdot \begin{bmatrix} 1 \\ 3 \end{bmatrix}$ (how to find the general equation of the plane? 예저 2.21)
+$$​p_1 = ​2x + y p_2 = −x + 3y​​$$
 
 
 ---
 
 
 
-## 7. Linear Independence (선형독립성)
+## 7. Linear Independence (선형독립성과 선형독립 판별법)
 
-
+정의 : 벡터 집합 ${v_1, \cdots, v_n}$에 대한 선형 결합 $c_1v_1 + \cdots + c_nv_n = 0$을 만족하는 $c_i$가 오직 $c_1 = \cdots = c_n = 0$으로 자명한 해뿐일 때, 이 벡터들은 선형독립이다. 즉, 어떤 벡터가 다른 벡터들의 선형 결합으로 표현이 가능하다면 선형독립이 성립하지 않는다. (linear dependence)
