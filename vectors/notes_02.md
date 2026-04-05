@@ -37,13 +37,15 @@ $y+3z=5$
 
 $5z=10$
 
+
+
 ### 2. 행 사다리꼴(row echelon form) [교재 69, PDF 85] : 가우스 소거법의 목표
 
 다음의 성질을 만족하는 행렬을 행 사다리꼴이라 한다. 
 
 ```
 (1) 모든 성분이 0인 행이 아래쪽에 있다. (zero vector)
-(2) 적어도 한 성분이 0이 아닌 행에서, 처음으로 0이 아닌 성분, 즉 선행성분(leading entry)은 아래 행에 있는 선행성분의 왼쪽 열에 위치한다. 
+(2) 적어도 한 성분이 0이 아닌 행에서, 처음으로 0이 아닌 성분, 즉 선행성분(leading entry, 주원소)은 아래 행에 있는 선행성분의 왼쪽 열에 위치한다. 
 ```
 
 주어진 행렬을 행 사다리꼴로 기본 행 변환(row reduction)하는 과정을 본다. 
@@ -120,3 +122,44 @@ $$\left(\begin{array}{ccc|c}
 \end{array}\right)$$
 
 Q. 가우스-조르당 소거법(gauss-jordan elimination)은 기약 행 사다리꼴(RREF) 조건으로 해를 바로 읽어낸다. 각 행의 선행성분이 1이 되고, 선행 성분 1이 있는 열의 다른 모든 성분이 0이 될 때까지 소거한다. 
+
+
+
+### 3. 가우시안 소거법 vs 가우스-조르당 소거법
+
+가우시안 소거법은 행렬을 "행 사다리꼴(row echelon form)"으로 만들고 이후에 후진 대입(back substitution)으로 해를 구한다. 따라서 아래 방향 소거만 진행한다. 
+
+이와 달리 가우스-조르당 소거법은 "기약 행 사다리꼴(reduced row echelon form)"까지 완전히 소거하여, 추가적인 계산 없이 행렬에서 직접 해를 읽어낼 수 있다. 따라서 위아래 양방향 소거 + 스케일링 연산($kR_1$)이 추가된다. 
+
+$$\left(\begin{array}{ccc|c}
+1 & -1 & -1 & 2 & 1\\
+2 & -2 & -1 & 3 & 3\\
+-1 & 1 & -1 & 0 & -3\\
+\end{array}\right)$$
+
+**공통(forward elimination)**
+$R_2 \leftarrow R_2 - 2 \cdot R_1$
+$R_3 \leftarrow R_3 + R_1$
+$R_3 \leftarrow R_3 - 2 \cdot R_2$
+
+$$\left(\begin{array}{ccc|c}
+1 & -1 & -1 & 2 & 1\\
+0 & 0 & 1 & -1 & 1\\
+0 & 0 & -2 + 2*1 & 2 +2*-1 & -2+2*1\\
+0 & 0 & 0 & 0 & 0\\
+\end{array}\right)$$
+
+$w - x - y + 2z = 1 (w = x - z + 2)$
+$0 + 0 + y - z = 1 (y = z + 1)$
+$w = x_1, x = x_2, y = x_3, z = x_4 (x, z는 자유변수)$
+
+**Gaussian은 REF 달성 후 Gauss-Jordan은 위쪽 계속 소거히야 RREF 생성(항등행렬, 모든 행에 해가 있는 경우)**
+$R_1 \leftarrow R_1 + R_2$
+
+$$\left(\begin{array}{ccc|c}
+1 & 1 & -2 & 3 & 2\\
+0 & 0 & 1 & -1 & 1\\
+0 & 0 & 0 & 0 & 0\\
+\end{array}\right)$$
+
+해당 첨가 계수행렬은 2열($R_2$)에 선행성분(주원소, leading entry)이 생기지 않아서 $x_2$가 자유변수가 되는 케이스이자 unique solution이 없는 경우의 좋은 예시다.
