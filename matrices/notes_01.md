@@ -1,4 +1,4 @@
-## 전치(Transpose)
+## 행렬과 전치(Transpose)
 
 * $A = a_{ij} \leftrightarrow A^T = A_{ji}$
 
@@ -32,5 +32,8 @@ $(A^T \cdot A)^T$와 $(A \cdot A^T)^T$는 자기 자신이 나오는데 이걸 s
 
 ## 행렬의 곱셉과 네 가지 관점 [열 공간(column space) 등]
 
+notes_02.markdown
 
 ## span과 column space(column space)
+
+notes_02.markdown
