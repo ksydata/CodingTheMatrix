@@ -32,7 +32,7 @@
 > $A^{-1} = \left(\begin{matrix} w & x \\ y & z \\ \end{matrix}\right)$, 만약 A가 역행렬을 갖는다면, 대응되는 연립 일차방정식은 해가 있는지 증명한다. 
 > - $AA^{-1} = I$(단위 행렬)에서 연립방정식 $\begin{cases} aw + by = 1 \\ ax + bz = 0 \\ kaw + kby = 0 \\ kax + kbz = 1 \end{cases}$, $k = 0$은 모순으로 해가 존재하지 않는다. 
 
-* 기본 행렬(elementary matrix) : 단위행렬 $\mathbf{I}$에 기본행 연산(row operation)을 1회 적용하여 얻은 행렬이다. 행렬 $\mathbf{A}$에 왼쪽에 기본 행렬 $\mathbf{E}$를 곱하는 연산을 말한다. 
+* 기본 행렬(elementary matrix) : 단위행렬 $\mathbf{I}$에 기본행 연산(row operation)을 1회 적용하여 얻은 행렬이다. 행렬 $\mathbf{A}$에 왼쪽에 기본 행렬 $\mathbf{E}$를 곱하는 연산을 말한다. 수학적으로 $E₃E₂E₁A = I$ 이면 $E₃E₂E₁I = A⁻¹$이다.
 
 > 예제 3.24 적용
 > $A = \left(\begin{matrix} 1 & 2 \\ 3 & 4 \\ \end{matrix}\right)$와 $B = \left(\begin{matrix} 12 & -15 \\ 4 & -5 \\ \end{matrix}\right)$의 역행렬이 존재하면, 역행렬을 구하라.
@@ -54,7 +54,19 @@
 > - 따라서 $x = -5, y = 3$
 
 > - **방법 2 : 가우스 조르단 활용**
+> - 첨가행렬 $[A \mid I] = \left(\begin{array}{cc|cc} 1 & 2 & 1 & 0 \\ 3 & 4 & 0 & 1\\ \end{array}\right)$
+> - 단계 1($R_2 - 3R_1 \rightarrow R_2$) : 첫 번째 열 아래를 0으로 변환
+> $\left(\begin{array}{cc|cc} 1 & 2 & 1 & 0 \\ 0 & -2 & -3 & 1\\ \end{array}\right)$
+> - 단계 2($\frac{-1}{2}R_2 \rightarrow R_2$) : 두 번째 행의 선행 성분(leading entry)를 1로 변환
+> $\left(\begin{array}{cc|cc} 1 & 2 & 1 & 0 \\ 0 & 1 & \frac{3}{2} & \frac{-1}{2} \\ \end{array}\right)$
+> - 단계 3($R_1 - 2R_2 \rightarrow R_1$) : 두 번째 열 위를 0으로 변환
+> $\left(\begin{array}{cc|cc} 1 & 0 & -2 & 1 \\ 0 & 1 & \frac{3}{2} & \frac{-1}{2} \\ \end{array}\right)$
+> - 왼쪽 행렬을 단위 행렬 $I$로 변환하여 오른쪽 역행렬 계산, $A^{-1} = \left(\begin{matrix} -2 & 1 \\ \frac{3}{2} & -\frac{1}{2} \\ \end{matrix}\right)$ 
+
+> 예제 3.33 : Revisiting Gaussian Elimination
+> - 계수행렬 : $A = \left(\begin{matrix} 2 & 1 & 3 \\ 4 & -1 & 3 \\ -2 & 5 & 5 \\ \end{matrix}\right)$
 > - [as-is]
+
 
 ---
 
