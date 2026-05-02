@@ -98,7 +98,7 @@ A가 LU 분해가 가능한 가역행렬(역행렬이 있으면)이면, L과 U�
 
 ### 3.2. P^TLU분해(Permutation matrix, Lower-Upper Factorization)
 
-P가 치환행렬이면, $P^{-1} = P^T$다. 일반적으로 행렬 $A = P^{-1}LU = P^TLU$로 분해할 수 있다. 모든 정사각행렬은 P^TLU분해 가능하다.
+P가 치환행렬이면, $P^{-1} = P^T$다. 일반적으로 행렬 $A = P^{-1}LU = P^TLU$로 분해할 수 있다. 모든 정사각행렬은 P^TLU분해 가능하다.(orthogonal matrix)
 
 > 예제 3.36 : A의 P^TLU분해를 구하여라.
 > - 계수행렬 : $A = \left(\begin{matrix} 0 & 0 & 6 \\ 1 & 2 & 3 \\ 2 & 1 & 4 \\ \end{matrix}\right)$
