@@ -63,14 +63,9 @@
 > $\left(\begin{array}{cc|cc} 1 & 0 & -2 & 1 \\ 0 & 1 & \frac{3}{2} & \frac{-1}{2} \\ \end{array}\right)$
 > - 왼쪽 행렬을 단위 행렬 $I$로 변환하여 오른쪽 역행렬 계산, $A^{-1} = \left(\begin{matrix} -2 & 1 \\ \frac{3}{2} & -\frac{1}{2} \\ \end{matrix}\right)$ 
 
-> 예제 3.33 : Revisiting Gaussian Elimination
-> - 계수행렬 : $A = \left(\begin{matrix} 2 & 1 & 3 \\ 4 & -1 & 3 \\ -2 & 5 & 5 \\ \end{matrix}\right)$
-> - [as-is]
-
-
 ---
 
-### 3. LU분해(Lower-Upper Factorization)
+### 3.1. LU분해(Lower-Upper Factorization)
 
 $\mathbf{L}$, 하삼각행렬과 $\mathbf{R}$ 상삼각행렬의 곱으로 나누는 기법, 이는 연립방정식(linear system)을 효율적으로 풀거나 행렬의 구조를 파악하는데 도움이 된다. 가우스 소거법을 통해 $A$를 $U$로 변환하는 과정에서 사용되는 행 연산의 역연산을 L에 기록한다. 
 
@@ -78,6 +73,35 @@ $\mathbf{L}$, 하삼각행렬과 $\mathbf{R}$ 상삼각행렬의 곱으로 나�
 
 연립방정식 $Ax = b$를 $Ly = b$, $Ux = y$의 2단계로 나누어 효율적으로 풀 수 있다. 
 
+
+> 예제 3.33 : Revisiting Gaussian Elimination
+> - 계수행렬 : $A = \left(\begin{matrix} 2 & 1 & 3 \\ 4 & -1 & 3 \\ -2 & 5 & 5 \\ \end{matrix}\right)$
+> - $R_2 \leftarrow R_2 - 2R_1$ : $A = \left(\begin{matrix} 2 & 1 & 3 \\ *0 & -3 & -3* \\ -2 & 5 & 5 \\ \end{matrix}\right)$ $E_1 = \left(\begin{matrix} 1 & 0 & 0 \\ *-2* & 1 & 0 \\ 0 & 0 & 1 \\ \end{matrix}\right)$
+> - $R_3 \leftarrow R_3 + R_1$ : $A = \left(\begin{matrix} 2 & 1 & 3 \\ 0 & -3 & -3 \\ *0 & 6 & 8* \\ \end{matrix}\right)$ $E_2 = \left(\begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ *1* & 0 & 1 \\ \end{matrix}\right)$
+
+> - $R_3 \leftarrow R_3 + 2R_2$ : $A = \left(\begin{matrix} 2 & 1 & 3 \\ 0 & -3 & -3 \\ *0 & 0 & 2* \\ \end{matrix}\right)$ $E_3 = \left(\begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & *2* & 1 \\ \end{matrix}\right)$
+> - $E_3E_2E_1A = U$
+> - $A = E_1^{-1}E_2^{-1}E_3^{-1}U = \left(\begin{matrix} 1 & 0 & 0 \\ *2* & 1 & 0 \\ 0 & 0 & 1 \\ \end{matrix}\right) \cdot \left(\begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ *-1* & 0 & 1 \\ \end{matrix}\right) \cdot  \left(\begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & *-2* & 1 \\ \end{matrix}\right) \cdot U$
+> - $A = \left(\begin{matrix} 1 & 0 & 0 \\ *2* & 1 & 0 \\ *-1* & *-2* & 1 \\ \end{matrix}\right) \cdot U$ 
+
+L은 단위 하삼각행렬로, 대각성분이 1이고 위의 성분이 모두 0인 행렬을 말한다. 또한, 행렬 A가 어떤 행교환도 하지 않고 행사다리꼴로 변형될 수 있는 정사각행렬(square matrix)이면, A는 LU분해 가능하다.
+
+> 예제 3.34 : A의 LU분해를 이용하여 연립방정식의 해를 구하는 방법
+> - 전진대입법 $Ly = b$를 y에 대하여 푼다, $b = \left(\begin{matrix} 1 \\ -4 \\ 9 \\ \end{matrix}\right)$
+> - $A = LU = \left(\begin{matrix} 1 & 0 & 0 \\ *2* & 1 & 0 \\ *-1* & *-2* & 1 \\ \end{matrix}\right) \cdot \left(\begin{matrix} 2 & 1 & 3 \\ 4 & -1 & 3 \\ -2 & 5 & 5 \\ \end{matrix}\right)$
+> - $\begin{cases} y_1 = 1 \\ 2y_1 + y_2 = -4 \\ -y_1 -2y_2 + y_3 = 9 \end{cases}$, $y = \left(\begin{matrix} 1 \\ -6 \\ -2 \\ \end{matrix}\right)$
+
+> - 후진대입법 $Ux = y$를 x에 대하여 푼다, $Ux = \left(\begin{matrix} 2 & 1 & 3 \\ 4 & -1 & 3 \\ -2 & 5 & 5 \\ \end{matrix}\right) \cdot x = \left(\begin{matrix} 1 \\ -6 \\ -2 \\ \end{matrix}\right)$
+> - $\begin{cases} 2x_1 + x_2 + 3x_3 = 1 \\ -3x_2 -3x_3 = -6 \\ 2x_3 = -2 \end{cases}$, $x = \left(\begin{matrix} \frac{1}{2} \\ 3 \\ -1 \\ \end{matrix}\right)$
+
+A가 LU 분해가 가능한 가역행렬(역행렬이 있으면)이면, L과 U는 유일하다.
+
+### 3.2. P^TLU분해(Permutation matrix, Lower-Upper Factorization)
+
+P가 치환행렬이면, $P^{-1} = P^T$다. 일반적으로 행렬 $A = P^{-1}LU = P^TLU$로 분해할 수 있다. 모든 정사각행렬은 P^TLU분해 가능하다.
+
+> 예제 3.36 : A의 P^TLU분해를 구하여라.
+> - 계수행렬 : $A = \left(\begin{matrix} 0 & 0 & 6 \\ 1 & 2 & 3 \\ 2 & 1 & 4 \\ \end{matrix}\right)$
 
 
 ---
