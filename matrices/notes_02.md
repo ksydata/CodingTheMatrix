@@ -96,6 +96,8 @@ L은 단위 하삼각행렬로, 대각성분이 1이고 위의 성분이 모두 
 
 A가 LU 분해가 가능한 가역행렬(역행렬이 있으면)이면, L과 U는 유일하다. U(상삼각행렬)의 대각성분을 따로 분리해서 대각행렬 D를 만들고 나머지를 선행 성분(leading entry)가 1인 U'으로 쪼개는 LDU 분해를 할 경우, A가 대칭행렬이면 더 계산이 편해진다. 
 
+[참고] 단, Elementary matrix operation(3가지, k배, +k, row interchange)를 하였을 때 벡터의 크기는 변할지라도 방향은 불변한다. 
+
 
 ### 3.2. P^TLU분해(Permutation matrix, Lower-Upper Factorization with Row Interchange)
 

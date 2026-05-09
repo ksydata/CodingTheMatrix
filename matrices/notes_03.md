@@ -6,14 +6,61 @@
 
 정의 : $\mathbf{R^n}$의 부분공간은 다음을 만족하는 $\mathbf{R^n}$ 안 벡터의 모임 $\mathbf{S}$이다. 
 > 1. zero vector ${0}$은 $\mathbf{S}$에 속한다.
-> 2. $u$, $v$가 $\mathbf{S}$에 속하면 $u+v$도 $\mathbf{S}$에 속한다. 
+
+> 2. $u$, $v$가 $\mathbf{S}$에 속하면 $u+v$도 $\mathbf{S}$에 속한다. [덧셈에 닫힘]
+
 > 3. $u$가 $\mathbf{S}$에 속하고 $c$가 스칼라이면, $cu$도 $\mathbf{S}$에 속한다. 즉, $\mathbf{S}$는 스칼라에 대해 닫혀 있다. 즉, 2,3.에 따라 $\mathbf{S}$는 일차선형결합(linear combination)에 관하여 닫혀있음을 알 수 있다. 
+
 > 만약 $u_1, u_2, \cdots, u_k$가 $\mathbf{S}$에 속하고 $c_1, c_2, \cdots, c_k$가 스칼라이면 $c_1 u_1, c_2 u_2, \cdots, c_k u_k$도 $\mathbf{S}$에 속한다.
 
-> 예제 3.38 : $z_1​ = 3y_1​, z_2 = −2y_2$를 만족하는 모든 벡터의 집합이 $\mathbf{R^3}$의 부분 공간임을 보여라.
+> 예제 3.38 : $x​ = 3y​, z = −2y$를 만족하는 모든 벡터의 집합 \begin{matrix} x \\ y \\ z \\ \end{matrix}이 $\mathbf{R^3}$의 부분 공간임을 보여라.
+> $\left(\begin{matrix} 3y \\ y \\ -2y \\ \end{matrix}\right) = \left(\begin{matrix} 3 \\ 1 \\ -2 \\ \end{matrix}\right) \cdot y$
+> y는 임의의 벡터로 주어진 벡터 집합은 span $\left(\begin{matrix} 3 \\ 1 \\ -2 \\ \end{matrix}\right)$을 갖는 3차원 실수 부분공간의 원점을 지나는 직선을 의미한다. 
+
+> 예제 3.39 : $x​ = 3y​+1, z = −2y$를 만족하는 모든 벡터의 집합 \begin{matrix} x \\ y \\ z \\ \end{matrix}이 $\mathbf{R^3}$의 부분 공간임을 보여라.
+> $\left(\begin{matrix} 3y+1 \\ y \\ -2y \\ \end{matrix}\right)$
+> 영벡터는 이러한 형태가 아니며(x때문에 0이 될 수 없음), 부분공간의 성질 중 1번째 조건이 성립하지 않으므로 3차원 실수 부분공간이 될 수 없다. 
+
+> 예제 3.40 : $y = x^2$를 만족하는 모든 벡터의 집합 \begin{matrix} x \\ y \\ \end{matrix}이 $\mathbf{R^2}$의 부분 공간임을 보여라.
+> $\left(\begin{matrix} x \\ x^2 \\ \end{matrix}\right)$ 형태의 벡터로 이루어진 집합 $\mathbf{S}$에 zero vector $\left(\begin{matrix} 0 \\ 0 \\ \end{matrix}\right)$에 속한다. (1번째 조건 성립)
+> 다만, $u = \left(\begin{matrix} x_1 \\ {x_1}^2 \\ \end{matrix}\right)$, $v = \left(\begin{matrix} x_2 \\ {x_2}^2 \\ \end{matrix}\right)$가 S의 임의의 원소라고 할 때,  
+> $u + v = \begin{pmatrix} x_1 + x_2 \\ x_1^2 + x_2^2 \end{pmatrix}$, $u + v$가 $S$에 속하려면 $x_1^2 + x_2^2 = (x_1 + x_2)^2$이어야 하는데, 이는 $2x_1 x_2 = 0$일 때만 성립한다. 일반적으로는 2번째 조건은 성립하지 않는다. (2번째 성분이 1번째 성분의 제곱이 성립하지 않는다.)
+> > **반례** : $u = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$, $v = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$이면 $u + v = \begin{pmatrix} 2 \\ 2 \end{pmatrix}$인데, $2 \neq 2^2 = 4$이므로 $u + v \notin S$.
 
 
-> 예제 3.39 : $z_1 ​= 3y_1​+1, z_2​ = −2y_2​$를 만족하는 모든 벡터의 집합이 부분 공간인지 판정하라.
+---
 
 
-> 예제 3.40 : $z = x^2$를 만족하는 모든 벡터의 집합이 $\mathbf{R^3}$의 부분 공간임을 보여라.
+### 5.1. 행렬 관련 부분공간(Row space, Column space)
+
+행렬의 영공간이 부분 공간이라는 사실은, 예제들에서 보았던 연립일차방정식의 해에 관해 이해해야 할 것들을 증명하도록 한다. 이들은 해가 존재하지 않거나, 유일한 해를 갖거나, 무수히 많은 해를 갖는다. 
+
+행공간 row(A)과 열공간 col(A)의 차원을 행렬 $A$의 계수(rank)라고 하고 rank(A)로 표기한다. 참고로 $A_1 = \left(\begin{matrix} 1 & 1 \\ 1 & 1 \\ \end{matrix}\right)$, $A_2 = \left(\begin{matrix} 1 & 1 \\ 0 & 0 \\ \end{matrix}\right)$의 $col(A_n)$은 달라진다. 
+
+> 샘플(수업) : 
+> 1. $\begin{pmatrix} 1 \\ 0 \end{pmatrix}$
+> 2. $\begin{pmatrix} 1 \\ 0 \end{pmatrix} \ \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
+> 3. $\begin{pmatrix} 1 \\ 0 \end{pmatrix} \ \begin{pmatrix} 0 \\ 1 \end{pmatrix} \ \begin{pmatrix} 1 \\ 1 \end{pmatrix}$
+> 4. $x_1\begin{pmatrix} 1 & -1 \end{pmatrix} + x_2\begin{pmatrix} 0 & 1 \end{pmatrix} + x_3\begin{pmatrix} 3 & -3 \end{pmatrix} = \begin{pmatrix} 4 & 5 \end{pmatrix}$
+> $\begin{pmatrix} x_1 & x_2 & x_3 \end{pmatrix} \begin{pmatrix} 1 & -1 \\ 0 & 1 \\ 3 & -3 \end{pmatrix} = \begin{pmatrix} 4 & 5 \end{pmatrix} \\$
+> $x^T \cdot A = w \implies (x^T \cdot A)^T = w^T \implies A^T x = w^T \\$
+> $\begin{pmatrix} 1 & 0 & 3 \\ -1 & 1 & -3 \end{pmatrix} x = \begin{pmatrix} 4 \\ 5 \end{pmatrix} \\$
+> 즉, 4.에서 해가 무수히 많은 건 $x_1, x_2, x_3$​의 조합이 여러 개인 걸로 증명되며, w (4,5)가 row(A)의 원소로 판정된다. 
+
+
+---
+
+
+### 5.2. 영공간(Null space) [AS-IS]
+
+null(A) 영공간은 $Ax = 0$의 해집합을 말한다. 
+
+
+---
+
+
+### 6. 기저(Finding a Basis for row(A) or col(A)) [AS-IS]
+
+* row(A)의 기저 : R의 영 아닌 행벡터(reduced row echelon form, 기약행사다리꼴)
+* col(A)의 기저 : R의 피벗열에 대응하는 A의 열
+* null(A)의 기저 : 자유변수를 매개변수로 → f개 벡터
