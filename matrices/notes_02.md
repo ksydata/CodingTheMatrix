@@ -94,15 +94,19 @@ L은 단위 하삼각행렬로, 대각성분이 1이고 위의 성분이 모두 
 > - 후진대입법 $Ux = y$를 x에 대하여 푼다, $Ux = \left(\begin{matrix} 2 & 1 & 3 \\ 4 & -1 & 3 \\ -2 & 5 & 5 \\ \end{matrix}\right) \cdot x = \left(\begin{matrix} 1 \\ -6 \\ -2 \\ \end{matrix}\right)$
 > - $\begin{cases} 2x_1 + x_2 + 3x_3 = 1 \\ -3x_2 -3x_3 = -6 \\ 2x_3 = -2 \end{cases}$, $x = \left(\begin{matrix} \frac{1}{2} \\ 3 \\ -1 \\ \end{matrix}\right)$
 
-A가 LU 분해가 가능한 가역행렬(역행렬이 있으면)이면, L과 U는 유일하다.
+A가 LU 분해가 가능한 가역행렬(역행렬이 있으면)이면, L과 U는 유일하다. U(상삼각행렬)의 대각성분을 따로 분리해서 대각행렬 D를 만들고 나머지를 선행 성분(leading entry)가 1인 U'으로 쪼개는 LDU 분해를 할 경우, A가 대칭행렬이면 더 계산이 편해진다. 
 
-### 3.2. P^TLU분해(Permutation matrix, Lower-Upper Factorization)
+
+### 3.2. P^TLU분해(Permutation matrix, Lower-Upper Factorization with Row Interchange)
 
 P가 치환행렬이면, $P^{-1} = P^T$다. 일반적으로 행렬 $A = P^{-1}LU = P^TLU$로 분해할 수 있다. 모든 정사각행렬은 P^TLU분해 가능하다.(orthogonal matrix)
 
 > 예제 3.36 : A의 P^TLU분해를 구하여라.
 > - 계수행렬 : $A = \left(\begin{matrix} 0 & 0 & 6 \\ 1 & 2 & 3 \\ 2 & 1 & 4 \\ \end{matrix}\right)$
-
+> 첫 번째 행의 (1,1) 위치가 0이라 피벗으로 쓸 수 없으며, 가장 큰 값을 가지는 행으로 교환(partial pivoting)한다. 
+> - $R_1 \leftrightarrow R_3$, U(상삼각행렬) 구하기 : $\left(\begin{matrix} 2 & 1 & 4 \\ 1 & 2 & 3 \\ 0 & 0 & 6 \\ \end{matrix}\right)$
+> - $R_2 \leftrightarrow R_2 - \frac{1}{2} R_1$ : $\left(\begin{matrix} 2 & 1 & 4 \\ 0 & \frac{3}{2} & 1 \\ 0 & 0 & 6 \\ \end{matrix}\right) = U$
+> - 소거 인수로 L(하삼각행렬) 구성 : $L = \left(\begin{matrix} 1 & 0 & 0 \\ *\frac{1}{2}* & 1 & 0 \\ 0 & 0 & 1 \\ \end{matrix}\right)$
 
 ---
 
