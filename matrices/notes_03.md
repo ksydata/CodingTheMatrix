@@ -4,6 +4,8 @@
 
 ### 4. 부분 공간과 생성 집합(Subspace Spanning sets)
 
+좋은 벡터들을 가지고 있어야(벡터들 간 선형독립이어야) 더 넓은 영역을 span할 수 있다.
+
 정의 : $\mathbf{R^n}$의 부분공간은 다음을 만족하는 $\mathbf{R^n}$ 안 벡터의 모임 $\mathbf{S}$이다. 
 > 1. zero vector ${0}$은 $\mathbf{S}$에 속한다.
 
@@ -51,9 +53,21 @@
 ---
 
 
-### 5.2. 영공간(Null space) [AS-IS]
+### 5.2. 영공간(Null space)
 
-null(A) 영공간은 $Ax = 0$의 해집합을 말한다. 
+null(A) 영공간(행공간과 수직)은 $Ax = 0$인(즉, colums의 linear combination이 0이 되도록 하는 그 계수) x들의 해집합을 말한다. 
+
+> 샘플 :
+> 1. $A = \begin{pmatrix} 1 & 0 & 1 \\ 0 & 1 & 1 \end{pmatrix} (rank = 2, null space의 dimension = 1) \\$
+> $Ax = \begin{pmatrix} 1 \\ 0 \end{pmatrix}x_1 + \begin{pmatrix} 0 \\ 1 \end{pmatrix}x_2 + \begin{pmatrix} 1 \\ 1 \end{pmatrix}x_3 = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \\$
+> $x = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ -1 \end{pmatrix}, \begin{pmatrix} 2 \\ 2 \\ -2 \end{pmatrix} \$
+> $c \cdot Ax = 0 \cdot c, x_n = c \cdot \begin{pmatrix} 1 \\ 1 \\ -1 \end{pmatrix}$
+> 2. $A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 0 & 0 \end{pmatrix} (rank = 1, null space의 dimension = 2) \\$
+> $A(c_1 x_1) = 0, A(c_2 x_2) = 0, A(c_1 x_1 + c_2 x_2) = 0 \\$
+> 즉, 3차원 공간 안에서 선형결합 벡터 $c_1 x_1 + c_2 x_2$는 평면을 span한다.
+
+* $A$가 $m \times n$일 때, $dim(N(A)) = n - r$이다.
+* Null space는 row space와 수직한 space다. 
 
 
 ---
@@ -61,6 +75,16 @@ null(A) 영공간은 $Ax = 0$의 해집합을 말한다.
 
 ### 6. 기저(Finding a Basis for row(A) or col(A)) [AS-IS]
 
+기저란 주어진 벡터 공간에서 그 공간을 span하는 선형독립인 벡터들을 말한다. 
+즉, 어떤 공간을 이루는 기반이 되는 필수적인 구성 요소다.
+
 * row(A)의 기저 : R의 영 아닌 행벡터(reduced row echelon form, 기약행사다리꼴)
 * col(A)의 기저 : R의 피벗열에 대응하는 A의 열
 * null(A)의 기저 : 자유변수를 매개변수로 → f개 벡터
+
+
+
+---
+
+
+* 출처 : https://m.blog.naver.com/csmathlab/223307665196?recommendTrackingCode=2
