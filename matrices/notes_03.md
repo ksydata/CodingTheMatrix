@@ -90,6 +90,7 @@ null(A) 영공간(행공간과 수직)은 $Ax = 0$인(즉, colums의 linear comb
 
 > **예제 3.45. ~ 3.47. ~ 3.48.** $A = \begin{pmatrix} 1 & 1 & 3 & 1 & 6 \\ 2 & -1 & 0 & 1 & -1 \\ -3 & 2 & 1 & -2 & 1 \\ 4 & 1 & 6 & 1 & 3 \end{pmatrix}$
 > 1. A의 RREF(가우스-조르단 소거법) $R = \begin{pmatrix} 1 & 0 & 1 & 0 & -1 \\ 0 & 1 & 2 & 0 & 3 \\ 0 & 0 & 0 & 1 & 4 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix}$ (피벗 열(위치) : 열 1,2,4 / 자유변수 : 열 3,5)
+> $R_2 - 2R_1, R_3 + 3R_1, R_4 - 4R_1$ 적용 → 계속 소거 → $\frac{-1}/{3}R_2$, 그 후 $R_3, R_4$ 소거
 
 > 2. rank(A) = 3, nullity(A) = 2, 3 + 2 = 5(n)
 
@@ -100,17 +101,18 @@ null(A) 영공간(행공간과 수직)은 $Ax = 0$인(즉, colums의 linear comb
 > $Basis_{col} = \begin{pmatrix} \begin{pmatrix} 1 \\ 2 \\ -3 \\ 4 \end{pmatrix}, \begin{pmatrix} 1 \\ -1 \\ 2 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ -2 \\ 1 \end{pmatrix} \end{pmatrix}$
 
 > 5. null(A)의 기저 : dim( null(A) ) = 2 = nullity(A)
-> $Rx = 0$에서 선행변수 ${x_1, x_2, x_4}$를 자유변수 ${x_3, x_5}$로 표현, 
-> $x = s \cdot u + t \cdot v (x_3 = s, x_5= t)$
+> (i) $Rx = 0$에서 선행변수 ${x_1, x_2, x_4}$를 자유변수 ${x_3, x_5}$로 표현, 
+> (ii) $x = s \cdot u + t \cdot v (x_3 = s, x_5= t)$
+> (iii) $\begin{cases} x_1 + x_3 - x_5 = 0 \\ x_2 + 2x_3 + 3x_5 = 0 \\ x_4 + 4x_5 = 0 \end{cases}$
+> (iv) $\begin{cases} x_1 = - s + t \\ x_2 = -2s -3t \\ x_4 = 0 -4t \end{cases}$
+> (v) ${x3, x5} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$일 때, $u = \begin{pmatrix} -1 & -2 & 1 & 0 & 0 \end{pmatrix}^T$
+> (vi) ${x3, x5} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$일 때, $v = \begin{pmatrix} 1 & -3 & 0 & -4 & 1 \end{pmatrix}^T$
+> $Basis_{null} = \begin{pmatrix} \begin{pmatrix} -1 \\ -2 \\ 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ -3 \\ 0 \\ -4 \\ 1 \end{pmatrix}  \end{pmatrix}$
+
+
+> **예제 3.52.** $\begin{pmatrix} \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 4 \\ 9 \\ 7 \end{pmatrix} \end{pmatrix}$ 백터가 $\mathbf{R}^3$에 기저가 됨을 보여라/
+> 필요충분조건으로 이들 벡터의 열 또는 행으로 갖는 행렬이 계수(rank) 3을 가져야 한다.
 > [AS-IS]
-> 
-> 
-> $Basis_{null} = \begin{pmatrix} \begin{pmatrix} -1 \\ -2 \\ 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ -3 \\ 0 \\ -4 \\ 1 \end{pmatrix}$
-
-
-> **예제 3.52.** $\begin{pmatrix} \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 4 \\ 9 \\ 7 \end{pmatrix} \end{pmatrix}$
-> [AS-IS]
-
 
 
 ### 6.2. 행공간의 기저(Baisis for row space(A))
@@ -123,7 +125,7 @@ row(A)는 행렬 A의 행들이 생성하는 $mathbf{R}^n$의 부분공간이다
 
 ### 6.3. 영공간(Baisis for Null space)
 
-영공간 null(A)는 $Ax = 0$의 해집합 $in mathbf{R}^n$으로 행공간과 수직(orthogonal)이며, 좌영공간 $null(A^T)은 $ATx = 0$의 해집합 $in mathbf{R}^m$으로 열공간과 수직이다. 
+영공간 null(A)는 $Ax = 0$의 해집합 $in mathbf{R}^n$으로 행공간과 수직(orthogonal)이며, 좌영공간 $null(A^T)$은 $ATx = 0$의 해집합 $in \mathbf{R}^m$으로 열공간과 수직이다. 
 
 > null(A)의 기저 수 : nullity(A)
 > $mathbf{R}x = 0$에서 자유변수를 매개변수로 하는 → f개 벡터
